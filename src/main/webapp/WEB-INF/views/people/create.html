@@ -1,0 +1,123 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Добавить читателя</title>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<form th:method="POST" th:action="@{/people}" th:object="${person}" >-->
+<!--    <label for="name">Введите имя: </label>-->
+<!--    <input type="text" th:field="*{name}" id="name">-->
+<!--    <br/>-->
+
+<!--    <label for="birthday">Введите дату рождения: </label>-->
+<!--    <input type="text" th:field="*{birthday}" id="birthday" >-->
+
+<!--    <hr/>-->
+
+<!--    <input type="submit" value="Добавить!">-->
+<!--</form>-->
+
+<!--<br/>-->
+
+<!--<form th:method="GET" th:action="@{/people}" >-->
+<!--    <input type="submit" value="Назад">-->
+<!--</form>-->
+
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить читателя</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1A1A1A; /* Темно-фиолетовый фон */
+            color: #FFFFFF; /* Белый текст */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start; /* Выравнивание по верхнему краю */
+            min-height: 100vh;
+        }
+        h1 {
+            background-color: #333333;
+            color: #BB86FC;
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+            margin-top: 0; /* Убираем отступ сверху */
+        }
+        hr {
+            width: 80%;
+            border: none;
+            border-top: 1px solid #424242;
+            margin-top: 0; /* Убираем отступ сверху */
+        }
+        form {
+            width: 80%;
+            margin-top: 20px;
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #FFFFFF;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            background-color: #333333;
+            color: #FFFFFF;
+            margin-bottom: 20px;
+        }
+        input[type="submit"] {
+            background-color: #6200EE;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #AA00FF;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Добавить читателя</h1>
+
+<hr/>
+
+<form th:method="POST" th:action="@{/people}" th:object="${person}" >
+    <label for="name">Введите имя: </label>
+    <input type="text" th:field="*{name}" id="name">
+    <br/>
+
+    <label for="birthday">Введите дату рождения: </label>
+    <input type="text" th:field="*{birthday}" id="birthday" >
+
+    <hr/>
+
+    <input type="submit" value="Добавить!">
+</form>
+
+<hr/>
+
+<form th:method="GET" th:action="@{/people}" >
+    <input type="submit" value="Назад">
+</form>
+
+</body>
+</html>

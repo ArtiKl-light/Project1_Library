@@ -1,0 +1,143 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Читатель</title>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<a th:text="${person.getName()}">name</a>-->
+
+<!--<hr/>-->
+
+<!--<a th:utext="'Книги: '" ></a>-->
+<!--<div th:each="book : ${book_list}">-->
+<!--    <a th:text="${book.getName()}"-->
+<!--    th:href="@{/books/read/{id}(id=${book.getBook_id()})}">-->
+<!--    </a>-->
+<!--</div>-->
+
+<!--<hr/>-->
+
+<!--<form th:method="GET" th:action="@{/people/update/{id}(id=${person.getPerson_id()})}" >-->
+<!--    <input type="submit" value="Редактировать">-->
+<!--</form>-->
+
+<!--<br/>-->
+
+<!--<form th:method="DELETE" th:action="@{/people/{id}(id=${person.getPerson_id()})}" >-->
+<!--    <input type="submit" value="Удалить">-->
+<!--</form>-->
+
+<!--<br/>-->
+
+<!--<form th:method="GET" th:action="@{/people}" >-->
+<!--    <input type="submit" value="Назад">-->
+<!--</form>-->
+
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Читатель</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1A1A1A; /* Темно-фиолетовый фон */
+            color: #FFFFFF; /* Белый текст */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start; /* Выравнивание по верхнему краю */
+            min-height: 100vh;
+        }
+        h1 {
+            background-color: #333333;
+            color: #BB86FC;
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+            margin-top: 0; /* Убираем отступ сверху */
+        }
+        hr {
+            width: 80%;
+            border: none;
+            border-top: 1px solid #424242;
+            margin-top: 0; /* Убираем отступ сверху */
+        }
+        a {
+            text-decoration: none;
+            color: #FFFFFF; /* Белый цвет текста для ссылок */
+            display: inline-block;
+            margin: 0 10px;
+            padding: 10px;
+            background-color: #6200EE;
+            text-align: center;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        a:hover {
+            background-color: #AA00FF;
+        }
+        div {
+            text-align: center;
+            margin-top: 10px;
+        }
+        form {
+            width: 80%;
+            margin: 20px auto;
+            text-align: center;
+        }
+        input[type="submit"] {
+            background-color: #6200EE;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-bottom: 10px;
+        }
+        input[type="submit"]:hover {
+            background-color: #AA00FF;
+        }
+    </style>
+</head>
+<body>
+
+<h1 th:text="${person.getName()}"></h1>
+
+<hr/>
+
+<p th:utext="'Книги: '" ></p>
+<div>
+    <div th:each="book : ${book_list}" style="display: inline-block;">
+        <a th:text="${book.getName()}"
+           th:href="@{/books/read/{id}(id=${book.getBook_id()})}">
+        </a>
+    </div>
+</div>
+
+<br/>
+<hr/>
+
+<form th:method="GET" th:action="@{/people/update/{id}(id=${person.getPerson_id()})}" >
+    <input type="submit" value="Редактировать">
+</form>
+
+<form th:method="DELETE" th:action="@{/people/{id}(id=${person.getPerson_id()})}" >
+    <input type="submit" value="Удалить">
+</form>
+
+<form th:method="GET" th:action="@{/people}" >
+    <input type="submit" value="Назад">
+</form>
+
+</body>
+</html>
