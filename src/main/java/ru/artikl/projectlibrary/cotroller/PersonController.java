@@ -1,5 +1,6 @@
 package ru.artikl.projectlibrary.cotroller;
 
+import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,18 +23,18 @@ public class PersonController {
     }
 
     @GetMapping("create")
-    public String create(@ModelAttribute("person") Person person) {
+    public String showCreate(@ModelAttribute("person") Person person) {
         return "people/create";
     }
 
     @PostMapping("")
-    public String createNew(@ModelAttribute("person") Person person) { // переписать название
+    public String create(@ModelAttribute("person") Person person) {
         personDAO.create(person);
         return "redirect:/people";
     }
 
     @GetMapping()
-    public String readAllPeople(Model model) {
+    public String readAll(Model model) {
         model.addAttribute("people", personDAO.readListPeople());
         return "people/readAll";
     }
@@ -52,7 +53,7 @@ public class PersonController {
     }
 
     @GetMapping("update/{id}")
-    public String update(@PathVariable("id") int id, Model model) {
+    public String showUpdate(@PathVariable("id") int id, Model model) {
         model.addAttribute("person", personDAO.read(id));
         return "people/update";
     }
