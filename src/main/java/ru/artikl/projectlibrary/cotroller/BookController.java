@@ -25,18 +25,18 @@ public class BookController {
     }
 
     @GetMapping("create")
-    public String create(@ModelAttribute("book") Book book) {
+    public String showCreate(@ModelAttribute("book") Book book) {
         return "books/create";
     }
 
     @PostMapping("")
-    public String createNew(@ModelAttribute("book") Book book) { // переписать название
+    public String create(@ModelAttribute("book") Book book) { // переписать название
         bookDAO.create(book);
         return "redirect:/books";
     }
 
     @GetMapping()
-    public String readAllBooks(Model model) {
+    public String readAll(Model model) {
         model.addAttribute("books", bookDAO.readList());
         return "books/books";
     }
@@ -56,7 +56,7 @@ public class BookController {
     }
 
     @GetMapping("update/{id}")
-    public String update(@PathVariable("id") int id, Model model) {
+    public String showUpdate(@PathVariable("id") int id, Model model) {
         model.addAttribute("book", bookDAO.read(id));
         return "books/update";
     }
@@ -68,13 +68,13 @@ public class BookController {
     }
 
     @PatchMapping("assign/{id}")
-    public String update(@PathVariable("id") int id, @ModelAttribute("person") Person person) {
+    public String assignBook(@PathVariable("id") int id, @ModelAttribute("person") Person person) {
         bookDAO.update(id, person.getPerson_id());
         return "redirect:/books";
     }
 
     @PatchMapping("update/delete/{id}")
-    public String update(@PathVariable("id") int id) {
+    public String showDelete(@PathVariable("id") int id) {
         bookDAO.update(id);
         return "redirect:/books/read/{id}";
     }
